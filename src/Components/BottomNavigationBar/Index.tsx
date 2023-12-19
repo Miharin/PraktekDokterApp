@@ -1,13 +1,11 @@
-import React from "react";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Restore, Favorite, LocationOn } from "@mui/icons-material";
 
 interface BottomNavigationBar_Interface {
-  Value: number;
-  SetValue: Function;
+  (Props: { Value: number; SetValue: Function }): any;
 }
 
-const BottomNavigationBar = (Props: BottomNavigationBar_Interface) => {
+const BottomNavigationBar: BottomNavigationBar_Interface = (Props) => {
   const { Value, SetValue } = Props;
   return (
     <Box
