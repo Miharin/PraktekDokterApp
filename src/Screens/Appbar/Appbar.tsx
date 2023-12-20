@@ -10,25 +10,25 @@ import {
 import { Menu } from "@mui/icons-material";
 
 interface Custom_Appbar_Interface {
-  (Props: { Open?: boolean; DrawerWidth: number; IsAuth: boolean }): any;
+  (Props: { Open?: boolean; drawerWidth: number; IsAuth: boolean }): any;
 }
 
 interface Custom_Styled_Appbar_Interface {
   open?: boolean;
-  DrawerWidth: number;
+  drawerwidth: number;
 }
 
 const CustomStyledAppbar = styled(MuiAppbar, {
   shouldForwardProp: (prop) => prop !== "open",
-})<Custom_Styled_Appbar_Interface>(({ theme, open, DrawerWidth }) => ({
+})<Custom_Styled_Appbar_Interface>(({ theme, open, drawerwidth }) => ({
   backgroundColor: "#e0c1f7",
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.easeIn,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    width: `calc(100% - ${DrawerWidth}px)`,
-    marginLeft: `${DrawerWidth}px`,
+    width: `calc(100% - ${drawerwidth}px)`,
+    marginLeft: `${drawerwidth}px`,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -37,12 +37,14 @@ const CustomStyledAppbar = styled(MuiAppbar, {
 }));
 
 const CustomAppbar: Custom_Appbar_Interface = (Props) => {
-  const { Open, DrawerWidth, IsAuth } = Props;
+  const { Open, drawerWidth, IsAuth } = Props;
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
       <CssBaseline />
       <CustomStyledAppbar
-        DrawerWidth={DrawerWidth}
+        drawerwidth={drawerWidth}
         position="fixed"
         open={Open}
       >

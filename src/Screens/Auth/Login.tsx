@@ -1,23 +1,23 @@
-import { Card, 
-  CardActions, 
-  CardContent, 
-  Container, 
-  Grid , 
-  Button, 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions, 
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   TextField,
   Typography,
-  Box
+  Button,
+  Box,
+  CardHeader,
 } from "@mui/material";
+import { Divider } from "@mui/material-next";
 import React from "react";
 
-
 const Login = () => {
-
-  const [open,setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,49 +26,70 @@ const Login = () => {
     setOpen(false);
   };
 
-  return <Box sx={{justifyContent:"center", alignItems:"center", display:"flex"}} >
-        <Card sx={{width: 400}}>
-          <CardContent>
-            <Typography fontSize={20} textAlign="center">
-              Login
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Grid container rowSpacing={4} xs={8}>
-              <Grid item xs={8}>
-                <TextField id="filled-basic" label="Email" variant="filled" sx={{ m:1, width:"39ch"}} />
-              </Grid>
-              <Grid item xs={8}>
-                <TextField id="filled-basic" label="Password" variant="filled" sx={{ m:1, width:"39ch"}} />
-              </Grid>
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Card sx={{ width: 400, paddingBottom: 1 }}>
+        <CardHeader sx={{ textAlign: "center" }} title="Login" />
+        <Divider variant="middle" />
+        <CardContent>
+          <Grid
+            container
+            rowSpacing={2}
+            direction="column"
+            justifyContent="center"
+            alignItems="stretch"
+            sx={{ pl: 1, pr: 1 }}
+          >
+            <Grid item>
+              <TextField id="filled-basic" label="Email" fullWidth />
             </Grid>
-          </CardContent>
-              <CardActions>
-                <Grid container justifyContent="right" >
-                  <Button variant="contained" onClick={handleClickOpen} size="small">Login</Button>
-                  <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle sx={{width: 450}}>Token</DialogTitle>
-                    <DialogContent>Please Enter Your Token!</DialogContent>
-                    <Grid container justifyContent="center">
-                      <TextField
-                      margin="normal"
-                      id="Token"
-                      label="Enter Token"
-                      variant="standard"
-                      sx={{width: 400}}
-                      />
-                    </Grid>
-                    <DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose}>Back</Button>
-                        <Button onClick={handleClose}>LogIn</Button>
-                      </DialogActions>
-                    </DialogContent>
-                  </Dialog>
-                </Grid>
-              </CardActions>
-        </Card>
-      </Box>
+            <Grid item>
+              <TextField id="filled-basic" label="Password" fullWidth />
+            </Grid>
+          </Grid>
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="text"
+            onClick={handleClickOpen}
+            size="small"
+            fullWidth
+          >
+            Login
+          </Button>
+        </CardActions>
+
+        <Grid container justifyContent="center">
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle sx={{ width: 450 }}>Token</DialogTitle>
+            <DialogContent>Please Enter Your Token!</DialogContent>
+            <Grid container justifyContent="center">
+              <TextField
+                margin="normal"
+                id="Token"
+                label="Enter Token"
+                variant="standard"
+                sx={{ width: 400 }}
+              />
+            </Grid>
+            <DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>Back</Button>
+                <Button onClick={handleClose}>Login</Button>
+              </DialogActions>
+            </DialogContent>
+          </Dialog>
+        </Grid>
+      </Card>
+    </Box>
+  );
 };
 
 export default Login;

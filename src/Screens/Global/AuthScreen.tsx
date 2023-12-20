@@ -7,7 +7,7 @@ const MainAuthScreen = styled("main", {
   shouldForwardProp: (prop) => prop !== "open",
 })<{ open?: boolean }>(({ theme, open }) => ({
   flexGrow: 1,
-  padding: theme.spacing(5),
+  padding: theme.spacing(0),
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.easeIn,
     duration: theme.transitions.duration.leavingScreen,
@@ -22,10 +22,13 @@ const MainAuthScreen = styled("main", {
   }),
 }));
 const AuthScreen = () => {
-  return (<>    <MainAuthScreen>
-      <CustomAppbar DrawerWidth={Drawer_Width} IsAuth={true} />
-    </MainAuthScreen>
-      <Children /></>
+  return (
+    <>
+      <MainAuthScreen>
+        <CustomAppbar drawerWidth={Drawer_Width} IsAuth={true} />
+      </MainAuthScreen>
+      <Children />
+    </>
   );
 };
 
